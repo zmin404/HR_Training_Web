@@ -1,0 +1,129 @@
+﻿@model HR_Training.Models.tbl_Course
+
+@{
+    ViewBag.Title = "Courses";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+
+<script type="text/javascript">
+
+    function DisableBackButton() {
+        window.history.forward();
+    }
+    setTimeout("DisableBackButton()", 0);
+    window.onunload = function () { null };
+    
+</script>
+
+<div class="col-md-12 row">
+    <div class="col-lg-2 col-sm-2 col-md-2 col-xs-2 btn-success" style="height: 900px; border: 1px solid gray; background-color: #0B3E73; overflow: auto">
+        <div style="width: 105%; margin-top: 10px" class="container list-group">
+
+            @foreach (var item in ViewData["list"] as List<HR_Training.Models.tbl_Course>)
+            {
+                <div class="list-group-item">
+                    @Html.ActionLink(item.Title.ToString(), "TopicAndDescription", new { id = item.Id })
+                </div>
+            }
+            @foreach (var item in ViewData["finishedCourseList"] as List<HR_Training.Models.tbl_Course>)
+            {
+                <div class="list-group-item" style="background-color: #5080D2 ">
+                    @Html.ActionLink(item.Title.ToString(), "TopicAndDescription", new { id = item.Id }, new { @style = "color:white;" })
+                </div>
+            } 
+        </div>
+    </div>
+    <div class="col-lg-10 col-sm-10 col-md-10 col-xs-10" style="height: 900px; border: 1px solid gray;overflow: auto">
+
+        @if (ViewData["QuestionMsg"] != null)
+        {
+            <div class="alert alert-danger">
+                <strong>
+                    Wrong!
+                </strong>
+                @ViewData["QuestionMsg"].ToString()
+            </div>
+
+            if (ViewData["Reason"] != null)
+            {
+                <div class="alert alert-warning">
+                    <strong>
+                        Reason!
+                    </strong>
+                    <br />
+
+                    @foreach (var reasonList in ViewData["Reason"] as List<HR_Training.Models.tbl_Question>)
+                    {
+                        <h5 style="line-height:1.7">-&nbsp; &nbsp; @reasonList.Answer</h5>
+                    }
+                </div>
+            }
+
+            <h3> @ViewData["Topic"]</h3>
+            <h5 style="line-height:1.7"> @ViewData["Description"]</h5>
+            <br />
+            <div class="form-group">
+                <div>
+
+                    <input type="button" value="Answer Again" onclick="location.href='@Url.Action("TopicAndDescription")?topicID='+@ViewData["TopicID"]+'&'+'courseID='+@ViewData["CourseID"]" style="background-color: #5cb85c; color: white; border: 1px solid #4cae4c " class="btn btn-default" />
+                </div>
+
+            </div>
+        }
+        @if (ViewData["Result"] != null)
+        {
+            <div style="margin-top:20%">
+                <h1 style="text-align: center; color: green">@ViewData["Result"]</h1>
+                <br />
+                <br />
+                @*<h3 style="text-align: center">You have successfully completed the @ViewData["TopicTitle"] topic of the @ViewData["CourseTitle"] course. Please choose another Topic! </h3>*@
+                <h3 style="text-align: center">You have successfully completed the @ViewData["TopicTitle"] topic. Please choose another Topic! </h3>
+            </div>
+            <br />
+            <br />
+            <div class="form-group" style="text-align:center">
+                <div>
+                    <input type="button" value="Continue" onclick="location.href='@Url.Action("TopicAndDescription", new {id=ViewData["CourseID"] })'" style="background-color: #5cb85c; color: white; border: 1px solid #4cae4c " class="btn btn-default" />
+                </div>
+
+            </div>
+
+        }
+        @if (ViewData["CourseFinishedResult"] != null)
+        {
+            <div style="margin-top:20%">
+                <h1 style="text-align: center; color: green">@ViewData["CourseFinishedResult"]</h1>
+                <br />
+                <br />
+                <h3 style="text-align: center">You have successfully completed the @ViewData["CourseTitle"] course. Please choose another Course! </h3>
+            </div>
+            <br />
+            <br />
+
+        }
+        @if (ViewData["AllFinished"] != null)
+        {
+            <div style="margin-top:20%">
+                <h1 style="text-align: center; color: green">@ViewData["AllFinished"]</h1>
+                <br />
+                <br />
+                <h3 style="text-align: center">YOU HAVE SUCCESSFULLY COMPLETED ALL THE TEST.</h3>
+            </div>
+            <br />
+            <br />
+
+        }
+        @if (ViewData["ExpiredMsg"] != null)
+        {
+            <div class="alert alert-warning"  style="margin-top:20%; text-align:center">
+                <h1>@ViewData["ExpiredMsg"]</h1>
+                <h3>@ViewData["ContactUsMsg"]</h3>
+        
+            </div>
+            
+
+        }
+
+    </div>
+</div>

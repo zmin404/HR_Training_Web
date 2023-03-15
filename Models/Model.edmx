@@ -1,0 +1,1811 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HRRTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Bill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="BillNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BillDate" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="CourseID" Type="int" />
+          <Property Name="BillAmount" Type="money" Nullable="false" />
+          <Property Name="StartDateTime" Type="datetime" Nullable="false" />
+          <Property Name="EndDateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="150" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Website" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_CompanyAndCourse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BillId" Type="int" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_CourseLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_CourseTopicLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="TopicID" Type="int" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="AnswerStatus" Type="bit" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_CourseTopicStory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="TopicId" Type="int" Nullable="false" />
+          <Property Name="StoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TitleID" Type="int" Nullable="false" />
+          <Property Name="EmployeeCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeeNameEng" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="EmployeeNameMyan" Type="nvarchar" MaxLength="200" />
+          <Property Name="DepartmentID" Type="int" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_EmployeeCourse">
+          <Key>
+            <PropertyRef Name="EmployeeCourseID" />
+          </Key>
+          <Property Name="EmployeeCourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="DueDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Progress" Type="decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="tbl_LoginHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoginStatus" Type="bit" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_ProgressTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="CourseID" Type="int" />
+          <Property Name="TopicID" Type="int" />
+          <Property Name="StoryID" Type="int" />
+          <Property Name="QuestionID" Type="int" />
+          <Property Name="StartDateTime" Type="datetime" />
+          <Property Name="EndDateTime" Type="datetime" />
+          <Property Name="Score" Type="int" />
+          <Property Name="AnswerStatus" Type="bit" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Question">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StoryId" Type="int" />
+          <Property Name="Questoin" Type="nvarchar(max)" />
+          <Property Name="Answer" Type="nvarchar(max)" />
+          <Property Name="IsCorrect" Type="bit" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Story">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TopicId" Type="int" Nullable="false" />
+          <Property Name="Story" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Title">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TitleCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Topic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_TrainingProgress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="StartDateTime" Type="datetime" Nullable="false" />
+          <Property Name="EndDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserRoleID" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="42" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LogInStatus" Type="bit" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_UserEmployee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="42" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_UserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserRoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tbl_Bill_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_Bill" Type="Self.tbl_Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Bill">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Bill_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_Bill" Type="Self.tbl_Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Bill">
+              <PropertyRef Name="LastModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CompanyAndCourse_tbl_Bill">
+          <End Role="tbl_Bill" Type="Self.tbl_Bill" Multiplicity="1" />
+          <End Role="tbl_CompanyAndCourse" Type="Self.tbl_CompanyAndCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Bill">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_CompanyAndCourse">
+              <PropertyRef Name="BillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CompanyAndCourse_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_CompanyAndCourse" Type="Self.tbl_CompanyAndCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_CompanyAndCourse">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CompanyAndCourse_tbl_Course">
+          <End Role="tbl_Course" Type="Self.tbl_Course" Multiplicity="1" />
+          <End Role="tbl_CompanyAndCourse" Type="Self.tbl_CompanyAndCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_CompanyAndCourse">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CompanyAndCourse_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_CompanyAndCourse" Type="Self.tbl_CompanyAndCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CompanyAndCourse">
+              <PropertyRef Name="LastModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Course_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_Course" Type="Self.tbl_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Course">
+              <PropertyRef Name="LastModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CourseTopic_tbl_Course">
+          <End Role="tbl_Course" Type="Self.tbl_Course" Multiplicity="1" />
+          <End Role="tbl_CourseTopicStory" Type="Self.tbl_CourseTopicStory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_CourseTopicStory">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CourseTopic_tbl_Story">
+          <End Role="tbl_Story" Type="Self.tbl_Story" Multiplicity="0..1" />
+          <End Role="tbl_CourseTopicStory" Type="Self.tbl_CourseTopicStory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Story">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_CourseTopicStory">
+              <PropertyRef Name="StoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CourseTopic_tbl_Topic">
+          <End Role="tbl_Topic" Type="Self.tbl_Topic" Multiplicity="1" />
+          <End Role="tbl_CourseTopicStory" Type="Self.tbl_CourseTopicStory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Topic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_CourseTopicStory">
+              <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Department_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_Department" Type="Self.tbl_Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Department">
+              <PropertyRef Name="LastModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Employee_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Employee_tbl_Department">
+          <End Role="tbl_Department" Type="Self.tbl_Department" Multiplicity="1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Employee_tbl_Title">
+          <End Role="tbl_Title" Type="Self.tbl_Title" Multiplicity="1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Title">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="TitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Employee_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="LastModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_EmployeeCourse_tbl_Course">
+          <End Role="tbl_Course" Type="Self.tbl_Course" Multiplicity="1" />
+          <End Role="tbl_EmployeeCourse" Type="Self.tbl_EmployeeCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_EmployeeCourse">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_EmployeeCourse_tbl_Employee">
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="1" />
+          <End Role="tbl_EmployeeCourse" Type="Self.tbl_EmployeeCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_EmployeeCourse">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_EmpTrainingStatus_tbl_Employee">
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="1" />
+          <End Role="tbl_TrainingProgress" Type="Self.tbl_TrainingProgress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_TrainingProgress">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_EmpTrainingStatus_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_TrainingProgress" Type="Self.tbl_TrainingProgress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_TrainingProgress">
+              <PropertyRef Name="LastModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ProgressTransaction_tbl_Course">
+          <End Role="tbl_Course" Type="Self.tbl_Course" Multiplicity="0..1" />
+          <End Role="tbl_ProgressTransaction" Type="Self.tbl_ProgressTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_ProgressTransaction">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ProgressTransaction_tbl_Employee">
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="1" />
+          <End Role="tbl_ProgressTransaction" Type="Self.tbl_ProgressTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_ProgressTransaction">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ProgressTransaction_tbl_Question">
+          <End Role="tbl_Question" Type="Self.tbl_Question" Multiplicity="0..1" />
+          <End Role="tbl_ProgressTransaction" Type="Self.tbl_ProgressTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_ProgressTransaction">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ProgressTransaction_tbl_Story">
+          <End Role="tbl_Story" Type="Self.tbl_Story" Multiplicity="0..1" />
+          <End Role="tbl_ProgressTransaction" Type="Self.tbl_ProgressTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Story">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_ProgressTransaction">
+              <PropertyRef Name="StoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ProgressTransaction_tbl_Topic">
+          <End Role="tbl_Topic" Type="Self.tbl_Topic" Multiplicity="0..1" />
+          <End Role="tbl_ProgressTransaction" Type="Self.tbl_ProgressTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Topic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_ProgressTransaction">
+              <PropertyRef Name="TopicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Question_tbl_Story">
+          <End Role="tbl_Story" Type="Self.tbl_Story" Multiplicity="0..1" />
+          <End Role="tbl_Question" Type="Self.tbl_Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Story">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Question">
+              <PropertyRef Name="StoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Story_tbl_Topic">
+          <End Role="tbl_Topic" Type="Self.tbl_Topic" Multiplicity="1" />
+          <End Role="tbl_Story" Type="Self.tbl_Story" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Topic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Story">
+              <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_TrainingProgress_tbl_CourseID">
+          <End Role="tbl_Course" Type="Self.tbl_Course" Multiplicity="1" />
+          <End Role="tbl_TrainingProgress" Type="Self.tbl_TrainingProgress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_TrainingProgress">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_User_tbl_UserRole">
+          <End Role="tbl_UserRole" Type="Self.tbl_UserRole" Multiplicity="1" />
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserRole">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_User">
+              <PropertyRef Name="UserRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_UserRole_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_UserRole" Type="Self.tbl_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_UserRole">
+              <PropertyRef Name="LastModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HRRTModelStoreContainer">
+          <EntitySet Name="tbl_Bill" EntityType="Self.tbl_Bill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Company" EntityType="Self.tbl_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CompanyAndCourse" EntityType="Self.tbl_CompanyAndCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Course" EntityType="Self.tbl_Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CourseLog" EntityType="Self.tbl_CourseLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CourseTopicLog" EntityType="Self.tbl_CourseTopicLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CourseTopicStory" EntityType="Self.tbl_CourseTopicStory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Department" EntityType="Self.tbl_Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Employee" EntityType="Self.tbl_Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_EmployeeCourse" EntityType="Self.tbl_EmployeeCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_LoginHistory" EntityType="Self.tbl_LoginHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ProgressTransaction" EntityType="Self.tbl_ProgressTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Question" EntityType="Self.tbl_Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Story" EntityType="Self.tbl_Story" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Title" EntityType="Self.tbl_Title" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Topic" EntityType="Self.tbl_Topic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_TrainingProgress" EntityType="Self.tbl_TrainingProgress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UserEmployee" EntityType="Self.tbl_UserEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UserRole" EntityType="Self.tbl_UserRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_Bill_tbl_Company" Association="Self.FK_tbl_Bill_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_Bill" EntitySet="tbl_Bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Bill_tbl_User" Association="Self.FK_tbl_Bill_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Bill" EntitySet="tbl_Bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CompanyAndCourse_tbl_Bill" Association="Self.FK_tbl_CompanyAndCourse_tbl_Bill">
+            <End Role="tbl_Bill" EntitySet="tbl_Bill" />
+            <End Role="tbl_CompanyAndCourse" EntitySet="tbl_CompanyAndCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CompanyAndCourse_tbl_Company" Association="Self.FK_tbl_CompanyAndCourse_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_CompanyAndCourse" EntitySet="tbl_CompanyAndCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CompanyAndCourse_tbl_Course" Association="Self.FK_tbl_CompanyAndCourse_tbl_Course">
+            <End Role="tbl_Course" EntitySet="tbl_Course" />
+            <End Role="tbl_CompanyAndCourse" EntitySet="tbl_CompanyAndCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CompanyAndCourse_tbl_User" Association="Self.FK_tbl_CompanyAndCourse_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_CompanyAndCourse" EntitySet="tbl_CompanyAndCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Course_tbl_User" Association="Self.FK_tbl_Course_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Course" EntitySet="tbl_Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CourseTopic_tbl_Course" Association="Self.FK_tbl_CourseTopic_tbl_Course">
+            <End Role="tbl_Course" EntitySet="tbl_Course" />
+            <End Role="tbl_CourseTopicStory" EntitySet="tbl_CourseTopicStory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CourseTopic_tbl_Story" Association="Self.FK_tbl_CourseTopic_tbl_Story">
+            <End Role="tbl_Story" EntitySet="tbl_Story" />
+            <End Role="tbl_CourseTopicStory" EntitySet="tbl_CourseTopicStory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CourseTopic_tbl_Topic" Association="Self.FK_tbl_CourseTopic_tbl_Topic">
+            <End Role="tbl_Topic" EntitySet="tbl_Topic" />
+            <End Role="tbl_CourseTopicStory" EntitySet="tbl_CourseTopicStory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Department_tbl_User" Association="Self.FK_tbl_Department_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Department" EntitySet="tbl_Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Employee_tbl_Company" Association="Self.FK_tbl_Employee_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Employee_tbl_Department" Association="Self.FK_tbl_Employee_tbl_Department">
+            <End Role="tbl_Department" EntitySet="tbl_Department" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Employee_tbl_Title" Association="Self.FK_tbl_Employee_tbl_Title">
+            <End Role="tbl_Title" EntitySet="tbl_Title" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Employee_tbl_User" Association="Self.FK_tbl_Employee_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_EmployeeCourse_tbl_Course" Association="Self.FK_tbl_EmployeeCourse_tbl_Course">
+            <End Role="tbl_Course" EntitySet="tbl_Course" />
+            <End Role="tbl_EmployeeCourse" EntitySet="tbl_EmployeeCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_EmployeeCourse_tbl_Employee" Association="Self.FK_tbl_EmployeeCourse_tbl_Employee">
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+            <End Role="tbl_EmployeeCourse" EntitySet="tbl_EmployeeCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_EmpTrainingStatus_tbl_Employee" Association="Self.FK_tbl_EmpTrainingStatus_tbl_Employee">
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+            <End Role="tbl_TrainingProgress" EntitySet="tbl_TrainingProgress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_EmpTrainingStatus_tbl_User" Association="Self.FK_tbl_EmpTrainingStatus_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_TrainingProgress" EntitySet="tbl_TrainingProgress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ProgressTransaction_tbl_Course" Association="Self.FK_tbl_ProgressTransaction_tbl_Course">
+            <End Role="tbl_Course" EntitySet="tbl_Course" />
+            <End Role="tbl_ProgressTransaction" EntitySet="tbl_ProgressTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ProgressTransaction_tbl_Employee" Association="Self.FK_tbl_ProgressTransaction_tbl_Employee">
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+            <End Role="tbl_ProgressTransaction" EntitySet="tbl_ProgressTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ProgressTransaction_tbl_Question" Association="Self.FK_tbl_ProgressTransaction_tbl_Question">
+            <End Role="tbl_Question" EntitySet="tbl_Question" />
+            <End Role="tbl_ProgressTransaction" EntitySet="tbl_ProgressTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ProgressTransaction_tbl_Story" Association="Self.FK_tbl_ProgressTransaction_tbl_Story">
+            <End Role="tbl_Story" EntitySet="tbl_Story" />
+            <End Role="tbl_ProgressTransaction" EntitySet="tbl_ProgressTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ProgressTransaction_tbl_Topic" Association="Self.FK_tbl_ProgressTransaction_tbl_Topic">
+            <End Role="tbl_Topic" EntitySet="tbl_Topic" />
+            <End Role="tbl_ProgressTransaction" EntitySet="tbl_ProgressTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Question_tbl_Story" Association="Self.FK_tbl_Question_tbl_Story">
+            <End Role="tbl_Story" EntitySet="tbl_Story" />
+            <End Role="tbl_Question" EntitySet="tbl_Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Story_tbl_Topic" Association="Self.FK_tbl_Story_tbl_Topic">
+            <End Role="tbl_Topic" EntitySet="tbl_Topic" />
+            <End Role="tbl_Story" EntitySet="tbl_Story" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_TrainingProgress_tbl_CourseID" Association="Self.FK_tbl_TrainingProgress_tbl_CourseID">
+            <End Role="tbl_Course" EntitySet="tbl_Course" />
+            <End Role="tbl_TrainingProgress" EntitySet="tbl_TrainingProgress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_User_tbl_UserRole" Association="Self.FK_tbl_User_tbl_UserRole">
+            <End Role="tbl_UserRole" EntitySet="tbl_UserRole" />
+            <End Role="tbl_User" EntitySet="tbl_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_UserRole_tbl_User" Association="Self.FK_tbl_UserRole_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_UserRole" EntitySet="tbl_UserRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HRRTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Bill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="BillNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BillDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="CourseID" Type="Int32" />
+          <Property Name="BillAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="StartDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_Company" Relationship="Self.FK_tbl_Bill_tbl_Company" FromRole="tbl_Bill" ToRole="tbl_Company" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_Bill_tbl_User" FromRole="tbl_Bill" ToRole="tbl_User" />
+          <NavigationProperty Name="tbl_CompanyAndCourse" Relationship="Self.FK_tbl_CompanyAndCourse_tbl_Bill" FromRole="tbl_Bill" ToRole="tbl_CompanyAndCourse" />
+        </EntityType>
+        <EntityType Name="tbl_Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_Bill" Relationship="Self.FK_tbl_Bill_tbl_Company" FromRole="tbl_Company" ToRole="tbl_Bill" />
+          <NavigationProperty Name="tbl_CompanyAndCourse" Relationship="Self.FK_tbl_CompanyAndCourse_tbl_Company" FromRole="tbl_Company" ToRole="tbl_CompanyAndCourse" />
+          <NavigationProperty Name="tbl_Employee" Relationship="Self.FK_tbl_Employee_tbl_Company" FromRole="tbl_Company" ToRole="tbl_Employee" />
+        </EntityType>
+        <EntityType Name="tbl_CompanyAndCourse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BillId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_Bill" Relationship="Self.FK_tbl_CompanyAndCourse_tbl_Bill" FromRole="tbl_CompanyAndCourse" ToRole="tbl_Bill" />
+          <NavigationProperty Name="tbl_Company" Relationship="Self.FK_tbl_CompanyAndCourse_tbl_Company" FromRole="tbl_CompanyAndCourse" ToRole="tbl_Company" />
+          <NavigationProperty Name="tbl_Course" Relationship="Self.FK_tbl_CompanyAndCourse_tbl_Course" FromRole="tbl_CompanyAndCourse" ToRole="tbl_Course" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_CompanyAndCourse_tbl_User" FromRole="tbl_CompanyAndCourse" ToRole="tbl_User" />
+        </EntityType>
+        <EntityType Name="tbl_Course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_CompanyAndCourse" Relationship="Self.FK_tbl_CompanyAndCourse_tbl_Course" FromRole="tbl_Course" ToRole="tbl_CompanyAndCourse" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_Course_tbl_User" FromRole="tbl_Course" ToRole="tbl_User" />
+          <NavigationProperty Name="tbl_CourseTopicStory" Relationship="Self.FK_tbl_CourseTopic_tbl_Course" FromRole="tbl_Course" ToRole="tbl_CourseTopicStory" />
+          <NavigationProperty Name="tbl_EmployeeCourse" Relationship="Self.FK_tbl_EmployeeCourse_tbl_Course" FromRole="tbl_Course" ToRole="tbl_EmployeeCourse" />
+          <NavigationProperty Name="tbl_TrainingProgress" Relationship="Self.FK_tbl_TrainingProgress_tbl_CourseID" FromRole="tbl_Course" ToRole="tbl_TrainingProgress" />
+          <NavigationProperty Name="tbl_ProgressTransaction" Relationship="HRRTModel.FK_tbl_ProgressTransaction_tbl_Course" FromRole="tbl_Course" ToRole="tbl_ProgressTransaction" />
+        </EntityType>
+        <EntityType Name="tbl_CourseLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_CourseTopicLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="TopicID" Type="Int32" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="AnswerStatus" Type="Boolean" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_CourseTopicStory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="TopicId" Type="Int32" Nullable="false" />
+          <Property Name="StoryId" Type="Int32" />
+          <NavigationProperty Name="tbl_Course" Relationship="Self.FK_tbl_CourseTopic_tbl_Course" FromRole="tbl_CourseTopicStory" ToRole="tbl_Course" />
+          <NavigationProperty Name="tbl_Story" Relationship="Self.FK_tbl_CourseTopic_tbl_Story" FromRole="tbl_CourseTopicStory" ToRole="tbl_Story" />
+          <NavigationProperty Name="tbl_Topic" Relationship="Self.FK_tbl_CourseTopic_tbl_Topic" FromRole="tbl_CourseTopicStory" ToRole="tbl_Topic" />
+        </EntityType>
+        <EntityType Name="tbl_Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_Department_tbl_User" FromRole="tbl_Department" ToRole="tbl_User" />
+          <NavigationProperty Name="tbl_Employee" Relationship="Self.FK_tbl_Employee_tbl_Department" FromRole="tbl_Department" ToRole="tbl_Employee" />
+        </EntityType>
+        <EntityType Name="tbl_Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeNameEng" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeNameMyan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_Company" Relationship="Self.FK_tbl_Employee_tbl_Company" FromRole="tbl_Employee" ToRole="tbl_Company" />
+          <NavigationProperty Name="tbl_Department" Relationship="Self.FK_tbl_Employee_tbl_Department" FromRole="tbl_Employee" ToRole="tbl_Department" />
+          <NavigationProperty Name="tbl_Title" Relationship="Self.FK_tbl_Employee_tbl_Title" FromRole="tbl_Employee" ToRole="tbl_Title" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_Employee_tbl_User" FromRole="tbl_Employee" ToRole="tbl_User" />
+          <NavigationProperty Name="tbl_EmployeeCourse" Relationship="Self.FK_tbl_EmployeeCourse_tbl_Employee" FromRole="tbl_Employee" ToRole="tbl_EmployeeCourse" />
+          <NavigationProperty Name="tbl_TrainingProgress" Relationship="Self.FK_tbl_EmpTrainingStatus_tbl_Employee" FromRole="tbl_Employee" ToRole="tbl_TrainingProgress" />
+          <NavigationProperty Name="tbl_ProgressTransaction" Relationship="HRRTModel.FK_tbl_ProgressTransaction_tbl_Employee" FromRole="tbl_Employee" ToRole="tbl_ProgressTransaction" />
+        </EntityType>
+        <EntityType Name="tbl_EmployeeCourse">
+          <Key>
+            <PropertyRef Name="EmployeeCourseID" />
+          </Key>
+          <Property Name="EmployeeCourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="DueDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Progress" Type="Decimal" Precision="18" Scale="4" />
+          <NavigationProperty Name="tbl_Course" Relationship="Self.FK_tbl_EmployeeCourse_tbl_Course" FromRole="tbl_EmployeeCourse" ToRole="tbl_Course" />
+          <NavigationProperty Name="tbl_Employee" Relationship="Self.FK_tbl_EmployeeCourse_tbl_Employee" FromRole="tbl_EmployeeCourse" ToRole="tbl_Employee" />
+        </EntityType>
+        <EntityType Name="tbl_LoginHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginStatus" Type="Boolean" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Question">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StoryId" Type="Int32" />
+          <Property Name="Questoin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsCorrect" Type="Boolean" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_Story" Relationship="Self.FK_tbl_Question_tbl_Story" FromRole="tbl_Question" ToRole="tbl_Story" />
+          <NavigationProperty Name="tbl_ProgressTransaction" Relationship="HRRTModel.FK_tbl_ProgressTransaction_tbl_Question" FromRole="tbl_Question" ToRole="tbl_ProgressTransaction" />
+        </EntityType>
+        <EntityType Name="tbl_Story">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TopicId" Type="Int32" Nullable="false" />
+          <Property Name="Story" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_CourseTopicStory" Relationship="Self.FK_tbl_CourseTopic_tbl_Story" FromRole="tbl_Story" ToRole="tbl_CourseTopicStory" />
+          <NavigationProperty Name="tbl_Question" Relationship="Self.FK_tbl_Question_tbl_Story" FromRole="tbl_Story" ToRole="tbl_Question" />
+          <NavigationProperty Name="tbl_Topic" Relationship="Self.FK_tbl_Story_tbl_Topic" FromRole="tbl_Story" ToRole="tbl_Topic" />
+          <NavigationProperty Name="tbl_ProgressTransaction" Relationship="HRRTModel.FK_tbl_ProgressTransaction_tbl_Story" FromRole="tbl_Story" ToRole="tbl_ProgressTransaction" />
+        </EntityType>
+        <EntityType Name="tbl_Title">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_Employee" Relationship="Self.FK_tbl_Employee_tbl_Title" FromRole="tbl_Title" ToRole="tbl_Employee" />
+        </EntityType>
+        <EntityType Name="tbl_Topic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_CourseTopicStory" Relationship="Self.FK_tbl_CourseTopic_tbl_Topic" FromRole="tbl_Topic" ToRole="tbl_CourseTopicStory" />
+          <NavigationProperty Name="tbl_Story" Relationship="Self.FK_tbl_Story_tbl_Topic" FromRole="tbl_Topic" ToRole="tbl_Story" />
+          <NavigationProperty Name="tbl_ProgressTransaction" Relationship="HRRTModel.FK_tbl_ProgressTransaction_tbl_Topic" FromRole="tbl_Topic" ToRole="tbl_ProgressTransaction" />
+        </EntityType>
+        <EntityType Name="tbl_TrainingProgress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="StartDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_Course" Relationship="Self.FK_tbl_TrainingProgress_tbl_CourseID" FromRole="tbl_TrainingProgress" ToRole="tbl_Course" />
+          <NavigationProperty Name="tbl_Employee" Relationship="Self.FK_tbl_EmpTrainingStatus_tbl_Employee" FromRole="tbl_TrainingProgress" ToRole="tbl_Employee" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_EmpTrainingStatus_tbl_User" FromRole="tbl_TrainingProgress" ToRole="tbl_User" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserRoleID" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="42" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LogInStatus" Type="Boolean" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_Bill" Relationship="Self.FK_tbl_Bill_tbl_User" FromRole="tbl_User" ToRole="tbl_Bill" />
+          <NavigationProperty Name="tbl_CompanyAndCourse" Relationship="Self.FK_tbl_CompanyAndCourse_tbl_User" FromRole="tbl_User" ToRole="tbl_CompanyAndCourse" />
+          <NavigationProperty Name="tbl_Course" Relationship="Self.FK_tbl_Course_tbl_User" FromRole="tbl_User" ToRole="tbl_Course" />
+          <NavigationProperty Name="tbl_Department" Relationship="Self.FK_tbl_Department_tbl_User" FromRole="tbl_User" ToRole="tbl_Department" />
+          <NavigationProperty Name="tbl_Employee" Relationship="Self.FK_tbl_Employee_tbl_User" FromRole="tbl_User" ToRole="tbl_Employee" />
+          <NavigationProperty Name="tbl_TrainingProgress" Relationship="Self.FK_tbl_EmpTrainingStatus_tbl_User" FromRole="tbl_User" ToRole="tbl_TrainingProgress" />
+          <NavigationProperty Name="tbl_UserRole" Relationship="Self.FK_tbl_User_tbl_UserRole" FromRole="tbl_User" ToRole="tbl_UserRole" />
+          <NavigationProperty Name="tbl_UserRole1" Relationship="Self.FK_tbl_UserRole_tbl_User" FromRole="tbl_User" ToRole="tbl_UserRole" />
+        </EntityType>
+        <EntityType Name="tbl_UserEmployee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="42" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_UserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserRoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_User_tbl_UserRole" FromRole="tbl_UserRole" ToRole="tbl_User" />
+          <NavigationProperty Name="tbl_User1" Relationship="Self.FK_tbl_UserRole_tbl_User" FromRole="tbl_UserRole" ToRole="tbl_User" />
+        </EntityType>
+        <Association Name="FK_tbl_Bill_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_Bill" Type="Self.tbl_Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Bill">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Bill_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_Bill" Type="Self.tbl_Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Bill">
+              <PropertyRef Name="LastModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CompanyAndCourse_tbl_Bill">
+          <End Role="tbl_Bill" Type="Self.tbl_Bill" Multiplicity="1" />
+          <End Role="tbl_CompanyAndCourse" Type="Self.tbl_CompanyAndCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Bill">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_CompanyAndCourse">
+              <PropertyRef Name="BillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CompanyAndCourse_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_CompanyAndCourse" Type="Self.tbl_CompanyAndCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_CompanyAndCourse">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Employee_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CompanyAndCourse_tbl_Course">
+          <End Role="tbl_Course" Type="Self.tbl_Course" Multiplicity="1" />
+          <End Role="tbl_CompanyAndCourse" Type="Self.tbl_CompanyAndCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_CompanyAndCourse">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CompanyAndCourse_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_CompanyAndCourse" Type="Self.tbl_CompanyAndCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CompanyAndCourse">
+              <PropertyRef Name="LastModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Course_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_Course" Type="Self.tbl_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Course">
+              <PropertyRef Name="LastModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CourseTopic_tbl_Course">
+          <End Role="tbl_Course" Type="Self.tbl_Course" Multiplicity="1" />
+          <End Role="tbl_CourseTopicStory" Type="Self.tbl_CourseTopicStory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_CourseTopicStory">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_EmployeeCourse_tbl_Course">
+          <End Role="tbl_Course" Type="Self.tbl_Course" Multiplicity="1" />
+          <End Role="tbl_EmployeeCourse" Type="Self.tbl_EmployeeCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_EmployeeCourse">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_TrainingProgress_tbl_CourseID">
+          <End Role="tbl_Course" Type="Self.tbl_Course" Multiplicity="1" />
+          <End Role="tbl_TrainingProgress" Type="Self.tbl_TrainingProgress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_TrainingProgress">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CourseTopic_tbl_Story">
+          <End Role="tbl_Story" Type="Self.tbl_Story" Multiplicity="0..1" />
+          <End Role="tbl_CourseTopicStory" Type="Self.tbl_CourseTopicStory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Story">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_CourseTopicStory">
+              <PropertyRef Name="StoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CourseTopic_tbl_Topic">
+          <End Role="tbl_Topic" Type="Self.tbl_Topic" Multiplicity="1" />
+          <End Role="tbl_CourseTopicStory" Type="Self.tbl_CourseTopicStory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Topic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_CourseTopicStory">
+              <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Department_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_Department" Type="Self.tbl_Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Department">
+              <PropertyRef Name="LastModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Employee_tbl_Department">
+          <End Role="tbl_Department" Type="Self.tbl_Department" Multiplicity="1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Employee_tbl_Title">
+          <End Role="tbl_Title" Type="Self.tbl_Title" Multiplicity="1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Title">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="TitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Employee_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="LastModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_EmployeeCourse_tbl_Employee">
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="1" />
+          <End Role="tbl_EmployeeCourse" Type="Self.tbl_EmployeeCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_EmployeeCourse">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_EmpTrainingStatus_tbl_Employee">
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="1" />
+          <End Role="tbl_TrainingProgress" Type="Self.tbl_TrainingProgress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_TrainingProgress">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Question_tbl_Story">
+          <End Role="tbl_Story" Type="Self.tbl_Story" Multiplicity="0..1" />
+          <End Role="tbl_Question" Type="Self.tbl_Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Story">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Question">
+              <PropertyRef Name="StoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Story_tbl_Topic">
+          <End Role="tbl_Topic" Type="Self.tbl_Topic" Multiplicity="1" />
+          <End Role="tbl_Story" Type="Self.tbl_Story" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Topic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Story">
+              <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_EmpTrainingStatus_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_TrainingProgress" Type="Self.tbl_TrainingProgress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_TrainingProgress">
+              <PropertyRef Name="LastModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_User_tbl_UserRole">
+          <End Role="tbl_UserRole" Type="Self.tbl_UserRole" Multiplicity="1" />
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserRole">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_User">
+              <PropertyRef Name="UserRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_UserRole_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_UserRole" Type="Self.tbl_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_UserRole">
+              <PropertyRef Name="LastModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HRRTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Bill" EntityType="Self.tbl_Bill" />
+          <EntitySet Name="tbl_Company" EntityType="Self.tbl_Company" />
+          <EntitySet Name="tbl_CompanyAndCourse" EntityType="Self.tbl_CompanyAndCourse" />
+          <EntitySet Name="tbl_Course" EntityType="Self.tbl_Course" />
+          <EntitySet Name="tbl_CourseLog" EntityType="Self.tbl_CourseLog" />
+          <EntitySet Name="tbl_CourseTopicLog" EntityType="Self.tbl_CourseTopicLog" />
+          <EntitySet Name="tbl_CourseTopicStory" EntityType="Self.tbl_CourseTopicStory" />
+          <EntitySet Name="tbl_Department" EntityType="Self.tbl_Department" />
+          <EntitySet Name="tbl_Employee" EntityType="Self.tbl_Employee" />
+          <EntitySet Name="tbl_EmployeeCourse" EntityType="Self.tbl_EmployeeCourse" />
+          <EntitySet Name="tbl_LoginHistory" EntityType="Self.tbl_LoginHistory" />
+          <EntitySet Name="tbl_Question" EntityType="Self.tbl_Question" />
+          <EntitySet Name="tbl_Story" EntityType="Self.tbl_Story" />
+          <EntitySet Name="tbl_Title" EntityType="Self.tbl_Title" />
+          <EntitySet Name="tbl_Topic" EntityType="Self.tbl_Topic" />
+          <EntitySet Name="tbl_TrainingProgress" EntityType="Self.tbl_TrainingProgress" />
+          <EntitySet Name="tbl_User" EntityType="Self.tbl_User" />
+          <EntitySet Name="tbl_UserEmployee" EntityType="Self.tbl_UserEmployee" />
+          <EntitySet Name="tbl_UserRole" EntityType="Self.tbl_UserRole" />
+          <AssociationSet Name="FK_tbl_Bill_tbl_Company" Association="Self.FK_tbl_Bill_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_Bill" EntitySet="tbl_Bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Bill_tbl_User" Association="Self.FK_tbl_Bill_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Bill" EntitySet="tbl_Bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CompanyAndCourse_tbl_Bill" Association="Self.FK_tbl_CompanyAndCourse_tbl_Bill">
+            <End Role="tbl_Bill" EntitySet="tbl_Bill" />
+            <End Role="tbl_CompanyAndCourse" EntitySet="tbl_CompanyAndCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CompanyAndCourse_tbl_Company" Association="Self.FK_tbl_CompanyAndCourse_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_CompanyAndCourse" EntitySet="tbl_CompanyAndCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Employee_tbl_Company" Association="Self.FK_tbl_Employee_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CompanyAndCourse_tbl_Course" Association="Self.FK_tbl_CompanyAndCourse_tbl_Course">
+            <End Role="tbl_Course" EntitySet="tbl_Course" />
+            <End Role="tbl_CompanyAndCourse" EntitySet="tbl_CompanyAndCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CompanyAndCourse_tbl_User" Association="Self.FK_tbl_CompanyAndCourse_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_CompanyAndCourse" EntitySet="tbl_CompanyAndCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Course_tbl_User" Association="Self.FK_tbl_Course_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Course" EntitySet="tbl_Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CourseTopic_tbl_Course" Association="Self.FK_tbl_CourseTopic_tbl_Course">
+            <End Role="tbl_Course" EntitySet="tbl_Course" />
+            <End Role="tbl_CourseTopicStory" EntitySet="tbl_CourseTopicStory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_EmployeeCourse_tbl_Course" Association="Self.FK_tbl_EmployeeCourse_tbl_Course">
+            <End Role="tbl_Course" EntitySet="tbl_Course" />
+            <End Role="tbl_EmployeeCourse" EntitySet="tbl_EmployeeCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_TrainingProgress_tbl_CourseID" Association="Self.FK_tbl_TrainingProgress_tbl_CourseID">
+            <End Role="tbl_Course" EntitySet="tbl_Course" />
+            <End Role="tbl_TrainingProgress" EntitySet="tbl_TrainingProgress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CourseTopic_tbl_Story" Association="Self.FK_tbl_CourseTopic_tbl_Story">
+            <End Role="tbl_Story" EntitySet="tbl_Story" />
+            <End Role="tbl_CourseTopicStory" EntitySet="tbl_CourseTopicStory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CourseTopic_tbl_Topic" Association="Self.FK_tbl_CourseTopic_tbl_Topic">
+            <End Role="tbl_Topic" EntitySet="tbl_Topic" />
+            <End Role="tbl_CourseTopicStory" EntitySet="tbl_CourseTopicStory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Department_tbl_User" Association="Self.FK_tbl_Department_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Department" EntitySet="tbl_Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Employee_tbl_Department" Association="Self.FK_tbl_Employee_tbl_Department">
+            <End Role="tbl_Department" EntitySet="tbl_Department" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Employee_tbl_Title" Association="Self.FK_tbl_Employee_tbl_Title">
+            <End Role="tbl_Title" EntitySet="tbl_Title" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Employee_tbl_User" Association="Self.FK_tbl_Employee_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_EmployeeCourse_tbl_Employee" Association="Self.FK_tbl_EmployeeCourse_tbl_Employee">
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+            <End Role="tbl_EmployeeCourse" EntitySet="tbl_EmployeeCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_EmpTrainingStatus_tbl_Employee" Association="Self.FK_tbl_EmpTrainingStatus_tbl_Employee">
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+            <End Role="tbl_TrainingProgress" EntitySet="tbl_TrainingProgress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Question_tbl_Story" Association="Self.FK_tbl_Question_tbl_Story">
+            <End Role="tbl_Story" EntitySet="tbl_Story" />
+            <End Role="tbl_Question" EntitySet="tbl_Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Story_tbl_Topic" Association="Self.FK_tbl_Story_tbl_Topic">
+            <End Role="tbl_Topic" EntitySet="tbl_Topic" />
+            <End Role="tbl_Story" EntitySet="tbl_Story" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_EmpTrainingStatus_tbl_User" Association="Self.FK_tbl_EmpTrainingStatus_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_TrainingProgress" EntitySet="tbl_TrainingProgress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_User_tbl_UserRole" Association="Self.FK_tbl_User_tbl_UserRole">
+            <End Role="tbl_UserRole" EntitySet="tbl_UserRole" />
+            <End Role="tbl_User" EntitySet="tbl_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_UserRole_tbl_User" Association="Self.FK_tbl_UserRole_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_UserRole" EntitySet="tbl_UserRole" />
+          </AssociationSet>
+          <EntitySet Name="tbl_ProgressTransaction" EntityType="HRRTModel.tbl_ProgressTransaction" />
+          <AssociationSet Name="FK_tbl_ProgressTransaction_tbl_Course" Association="HRRTModel.FK_tbl_ProgressTransaction_tbl_Course">
+            <End Role="tbl_Course" EntitySet="tbl_Course" />
+            <End Role="tbl_ProgressTransaction" EntitySet="tbl_ProgressTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ProgressTransaction_tbl_Employee" Association="HRRTModel.FK_tbl_ProgressTransaction_tbl_Employee">
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+            <End Role="tbl_ProgressTransaction" EntitySet="tbl_ProgressTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ProgressTransaction_tbl_Question" Association="HRRTModel.FK_tbl_ProgressTransaction_tbl_Question">
+            <End Role="tbl_Question" EntitySet="tbl_Question" />
+            <End Role="tbl_ProgressTransaction" EntitySet="tbl_ProgressTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ProgressTransaction_tbl_Story" Association="HRRTModel.FK_tbl_ProgressTransaction_tbl_Story">
+            <End Role="tbl_Story" EntitySet="tbl_Story" />
+            <End Role="tbl_ProgressTransaction" EntitySet="tbl_ProgressTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ProgressTransaction_tbl_Topic" Association="HRRTModel.FK_tbl_ProgressTransaction_tbl_Topic">
+            <End Role="tbl_Topic" EntitySet="tbl_Topic" />
+            <End Role="tbl_ProgressTransaction" EntitySet="tbl_ProgressTransaction" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="tbl_ProgressTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="CourseID" Type="Int32" />
+          <Property Name="TopicID" Type="Int32" />
+          <Property Name="StoryID" Type="Int32" />
+          <Property Name="QuestionID" Type="Int32" />
+          <Property Name="StartDateTime" Type="DateTime" Precision="3" />
+          <Property Name="EndDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Score" Type="Int32" />
+          <Property Name="AnswerStatus" Type="Boolean" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_Course" Relationship="HRRTModel.FK_tbl_ProgressTransaction_tbl_Course" FromRole="tbl_ProgressTransaction" ToRole="tbl_Course" />
+          <NavigationProperty Name="tbl_Employee" Relationship="HRRTModel.FK_tbl_ProgressTransaction_tbl_Employee" FromRole="tbl_ProgressTransaction" ToRole="tbl_Employee" />
+          <NavigationProperty Name="tbl_Question" Relationship="HRRTModel.FK_tbl_ProgressTransaction_tbl_Question" FromRole="tbl_ProgressTransaction" ToRole="tbl_Question" />
+          <NavigationProperty Name="tbl_Story" Relationship="HRRTModel.FK_tbl_ProgressTransaction_tbl_Story" FromRole="tbl_ProgressTransaction" ToRole="tbl_Story" />
+          <NavigationProperty Name="tbl_Topic" Relationship="HRRTModel.FK_tbl_ProgressTransaction_tbl_Topic" FromRole="tbl_ProgressTransaction" ToRole="tbl_Topic" />
+        </EntityType>
+        <Association Name="FK_tbl_ProgressTransaction_tbl_Course">
+          <End Type="HRRTModel.tbl_Course" Role="tbl_Course" Multiplicity="0..1" />
+          <End Type="HRRTModel.tbl_ProgressTransaction" Role="tbl_ProgressTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_ProgressTransaction">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ProgressTransaction_tbl_Employee">
+          <End Type="HRRTModel.tbl_Employee" Role="tbl_Employee" Multiplicity="1" />
+          <End Type="HRRTModel.tbl_ProgressTransaction" Role="tbl_ProgressTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_ProgressTransaction">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ProgressTransaction_tbl_Question">
+          <End Type="HRRTModel.tbl_Question" Role="tbl_Question" Multiplicity="0..1" />
+          <End Type="HRRTModel.tbl_ProgressTransaction" Role="tbl_ProgressTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_ProgressTransaction">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ProgressTransaction_tbl_Story">
+          <End Type="HRRTModel.tbl_Story" Role="tbl_Story" Multiplicity="0..1" />
+          <End Type="HRRTModel.tbl_ProgressTransaction" Role="tbl_ProgressTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Story">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_ProgressTransaction">
+              <PropertyRef Name="StoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ProgressTransaction_tbl_Topic">
+          <End Type="HRRTModel.tbl_Topic" Role="tbl_Topic" Multiplicity="0..1" />
+          <End Type="HRRTModel.tbl_ProgressTransaction" Role="tbl_ProgressTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Topic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_ProgressTransaction">
+              <PropertyRef Name="TopicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HRRTModelStoreContainer" CdmEntityContainer="HRRTEntities">
+          <EntitySetMapping Name="tbl_Bill">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_Bill">
+              <MappingFragment StoreEntitySet="tbl_Bill">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+                <ScalarProperty Name="BillDate" ColumnName="BillDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="BillAmount" ColumnName="BillAmount" />
+                <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+                <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Company">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_Company">
+              <MappingFragment StoreEntitySet="tbl_Company">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CompanyAndCourse">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_CompanyAndCourse">
+              <MappingFragment StoreEntitySet="tbl_CompanyAndCourse">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BillId" ColumnName="BillId" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Course">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_Course">
+              <MappingFragment StoreEntitySet="tbl_Course">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CourseLog">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_CourseLog">
+              <MappingFragment StoreEntitySet="tbl_CourseLog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CourseTopicLog">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_CourseTopicLog">
+              <MappingFragment StoreEntitySet="tbl_CourseTopicLog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="AnswerStatus" ColumnName="AnswerStatus" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CourseTopicStory">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_CourseTopicStory">
+              <MappingFragment StoreEntitySet="tbl_CourseTopicStory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+                <ScalarProperty Name="StoryId" ColumnName="StoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Department">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_Department">
+              <MappingFragment StoreEntitySet="tbl_Department">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Employee">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_Employee">
+              <MappingFragment StoreEntitySet="tbl_Employee">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TitleID" ColumnName="TitleID" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="EmployeeNameEng" ColumnName="EmployeeNameEng" />
+                <ScalarProperty Name="EmployeeNameMyan" ColumnName="EmployeeNameMyan" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_EmployeeCourse">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_EmployeeCourse">
+              <MappingFragment StoreEntitySet="tbl_EmployeeCourse">
+                <ScalarProperty Name="EmployeeCourseID" ColumnName="EmployeeCourseID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="DueDateTime" ColumnName="DueDateTime" />
+                <ScalarProperty Name="Progress" ColumnName="Progress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_LoginHistory">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_LoginHistory">
+              <MappingFragment StoreEntitySet="tbl_LoginHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="LoginStatus" ColumnName="LoginStatus" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Question">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_Question">
+              <MappingFragment StoreEntitySet="tbl_Question">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StoryId" ColumnName="StoryId" />
+                <ScalarProperty Name="Questoin" ColumnName="Questoin" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="IsCorrect" ColumnName="IsCorrect" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Story">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_Story">
+              <MappingFragment StoreEntitySet="tbl_Story">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+                <ScalarProperty Name="Story" ColumnName="Story" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Title">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_Title">
+              <MappingFragment StoreEntitySet="tbl_Title">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TitleCode" ColumnName="TitleCode" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Topic">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_Topic">
+              <MappingFragment StoreEntitySet="tbl_Topic">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_TrainingProgress">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_TrainingProgress">
+              <MappingFragment StoreEntitySet="tbl_TrainingProgress">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+                <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_User">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_User">
+              <MappingFragment StoreEntitySet="tbl_User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LogInStatus" ColumnName="LogInStatus" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UserEmployee">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_UserEmployee">
+              <MappingFragment StoreEntitySet="tbl_UserEmployee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UserRole">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_UserRole">
+              <MappingFragment StoreEntitySet="tbl_UserRole">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserRoleName" ColumnName="UserRoleName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ProgressTransaction">
+            <EntityTypeMapping TypeName="HRRTModel.tbl_ProgressTransaction">
+              <MappingFragment StoreEntitySet="tbl_ProgressTransaction">
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="AnswerStatus" ColumnName="AnswerStatus" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+                <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="StoryID" ColumnName="StoryID" />
+                <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

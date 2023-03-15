@@ -1,0 +1,107 @@
+﻿@model HR_Training.Models.tbl_CourseTopicStory
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Question Start</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <style>
+        body {
+            background-image: url('../../Content/Img/QuestionImg.png');
+            background-size: cover;
+        }
+    </style>
+
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row ">
+
+            <div class="container" style="margin:0 auto; margin-top:100px; font-family:'Arial Rounded MT'">
+                <div class="row">
+                    <h1 style="color: deepskyblue; font-family: Algerian">Story:</h1>
+                </div>
+                <div class="row">
+                    <h3 style="font-family: Arial, Helvetica, sans-serif; color: white; line-height: 1.7">@ViewData["Story"]</h3>
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="row">
+                    <h1 style="color: deepskyblue; font-family: Algerian">Answer:</h1>
+                </div>
+                <div class="row">
+
+
+
+                    @foreach (var questionList in ViewData["QuestionList"] as List<HR_Training.Models.tbl_Question>)
+                    {
+
+                        <div class="checkbox" style="color:white">
+                            <label>
+                                <input type="checkbox"
+                                       name="SelectedQuestion"
+                                       value="@questionList.ID"
+                                       @if (Model.SelectedQuestion.Contains(Convert.ToString(questionList.ID))) { <text> checked </text> } /> @questionList.Questoin
+                                </label>
+                            </div>
+                            <br />
+
+                        }
+
+
+                </div>
+
+                <br />
+
+                <div class="row">
+                    <input type="submit" value="submit" class="btn btn-success" />
+                </div>
+                <br/>
+                <br/>
+
+            </div>
+
+        </div>
+        <div class="loader-wrapper">
+            <span class="loader"><span class="loader-inner"></span></span>
+        </div>
+    }
+
+ 
+   
+    <script type="text/javascript">
+        setTimeout(function () {
+            $('.loader-wrapper').fadeToggle();
+        }, 1500);
+        function DisableBackButton()
+        {
+            window.history.forward();
+        }
+        setTimeout("DisableBackButton()", 0);
+        window.onunload = function () { null };
+    </script>
+    
+
+</body>
+
+</html>
+
+

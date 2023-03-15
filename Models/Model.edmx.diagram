@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="88531f3491914bb39689b01848d05e87" Name="Diagram1">
+        <EntityTypeShape EntityType="HRRTModel.tbl_Bill" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_Company" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_CompanyAndCourse" Width="1.5" PointX="8.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_Course" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_CourseLog" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_CourseTopicLog" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_CourseTopicStory" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_Department" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_Employee" Width="1.5" PointX="5.25" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_EmployeeCourse" Width="1.5" PointX="8.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_LoginHistory" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_Question" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_Story" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_Title" Width="1.5" PointX="3" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_Topic" Width="1.5" PointX="1.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_TrainingProgress" Width="1.5" PointX="8.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_User" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_UserEmployee" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_UserRole" Width="1.5" PointX="3" PointY="22.75" IsExpanded="true" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_Bill_tbl_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_Bill_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_CompanyAndCourse_tbl_Bill" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_CompanyAndCourse_tbl_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_Employee_tbl_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_CompanyAndCourse_tbl_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_CompanyAndCourse_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_Course_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_CourseTopic_tbl_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_EmployeeCourse_tbl_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_TrainingProgress_tbl_CourseID" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_CourseTopic_tbl_Story" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_CourseTopic_tbl_Topic" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_Department_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_Employee_tbl_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_Employee_tbl_Title" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_Employee_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_EmployeeCourse_tbl_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_EmpTrainingStatus_tbl_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_Question_tbl_Story" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_Story_tbl_Topic" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_EmpTrainingStatus_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_User_tbl_UserRole" ManuallyRouted="false" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_UserRole_tbl_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HRRTModel.tbl_ProgressTransaction" Width="1.5" PointX="10.5" PointY="9.375" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_ProgressTransaction_tbl_Course" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_ProgressTransaction_tbl_Employee" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_ProgressTransaction_tbl_Question" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_ProgressTransaction_tbl_Story" />
+        <AssociationConnector Association="HRRTModel.FK_tbl_ProgressTransaction_tbl_Topic" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

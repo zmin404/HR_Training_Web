@@ -1,0 +1,2041 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="HR_TrainingService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="HRRTcpEndpoint_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/HR_TrainingVO" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="HR_TrainingIService_GetAllTrainingProgress_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTrainingProgress" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllTrainingProgress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTrainingProgressResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllTrainingProgress_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q1:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddTrainingProgress_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTrainingProgress" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddTrainingProgress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTrainingProgressResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddTrainingProgress_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q2:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditTrainingProgress_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditTrainingProgress" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditTrainingProgress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditTrainingProgressResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditTrainingProgress_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q3:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetUserLogIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserLogIn" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetUserLogIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserLogInResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetUserLogIn_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q4:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUser" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllUser_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q5:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveUser" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveUser_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q6:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddUser_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q7:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditUser" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditUser_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q8:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetUserEmployeeLogIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserEmployeeLogIn" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetUserEmployeeLogIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserEmployeeLogInResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetUserEmployeeLogIn_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q9:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllUserEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUserEmployee" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllUserEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUserEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllUserEmployee_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q10:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveUserEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveUserEmployee" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveUserEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveUserEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveUserEmployee_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q11:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddUserEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserEmployee" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddUserEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddUserEmployee_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q12:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditUserEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditUserEmployee" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditUserEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditUserEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditUserEmployee_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q13:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetNewBillNo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewBillNo" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetNewBillNo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewBillNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetNewBillNo_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q14:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllBill_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBill" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllBill_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllBill_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q15:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetBillByCompanyID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBillByCompanyID" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetBillByCompanyID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBillByCompanyIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetBillByCompanyID_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q16:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddBillAndCompanyCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddBillAndCompanyCourse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddBillAndCompanyCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddBillAndCompanyCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddBillAndCompanyCourse_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q17:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddBillList_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddBillList" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddBillList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddBillListResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddBillList_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q18:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditBillList_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditBillList" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditBillList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditBillListResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditBillList_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q19:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddBill_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddBill" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddBill_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddBill_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q20:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditBill_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditBill" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditBill_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditBill_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q21:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCompany" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllCompany_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q22:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCompany" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddCompany_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q23:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditCompany" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditCompany_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q24:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCourse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllCourse_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q25="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q25:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllCourseByCompanyID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCourseByCompanyID" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllCourseByCompanyID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCourseByCompanyIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllCourseByCompanyID_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q26:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCourse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddCourse_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q27="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q27:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditCourse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditCourse_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q28="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q28:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllCourseByEmployeeID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCourseByEmployeeID" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllCourseByEmployeeID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCourseByEmployeeIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllCourseByEmployeeID_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q29="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q29:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllCourseTopicStory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCourseTopicStory" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllCourseTopicStory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCourseTopicStoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllCourseTopicStory_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q30="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q30:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetCourseTopicStoryByCourseID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCourseTopicStoryByCourseID" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetCourseTopicStoryByCourseID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCourseTopicStoryByCourseIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetCourseTopicStoryByCourseID_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q31="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q31:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddCourseTopicStory_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCourseTopicStory" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddCourseTopicStory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCourseTopicStoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddCourseTopicStory_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q32="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q32:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditCourseTopicStory_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditCourseTopicStory" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditCourseTopicStory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditCourseTopicStoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditCourseTopicStory_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q33="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q33:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllDepartment_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDepartment" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllDepartment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDepartmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllDepartment_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q34="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q34:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveDepartment_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveDepartment" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveDepartment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveDepartmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveDepartment_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q35="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q35:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddDepartment_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDepartment" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddDepartment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDepartmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddDepartment_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q36="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q36:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditDepartment_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditDepartment" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditDepartment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditDepartmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditDepartment_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q37="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q37:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_IsDepartmentCodeExit_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsDepartmentCodeExit" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_IsDepartmentCodeExit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsDepartmentCodeExitResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_IsDepartmentCodeExit_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q38="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q38:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_IsDepartmentNameExit_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsDepartmentNameExit" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_IsDepartmentNameExit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsDepartmentNameExitResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_IsDepartmentNameExit_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q39="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q39:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EmployeeLogIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:EmployeeLogIn" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EmployeeLogIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EmployeeLogInResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EmployeeLogIn_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q40="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q40:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllEmployee" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllEmployee_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q41="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q41:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveEmployee" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveEmployee_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q42="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q42:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveEmployeeByDepartmentID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveEmployeeByDepartmentID" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveEmployeeByDepartmentID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveEmployeeByDepartmentIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveEmployeeByDepartmentID_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q43="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q43:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveEmployeeByCompanyID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveEmployeeByCompanyID" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveEmployeeByCompanyID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveEmployeeByCompanyIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveEmployeeByCompanyID_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q44="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q44:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetEmployeeByEmployeeID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeByEmployeeID" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetEmployeeByEmployeeID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeByEmployeeIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetEmployeeByEmployeeID_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q45="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q45:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddEmployee" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddEmployee_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q46="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q46:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditEmployee" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditEmployee_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q47="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q47:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_IsEmployeeCodeExit_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsEmployeeCodeExit" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_IsEmployeeCodeExit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsEmployeeCodeExitResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_IsEmployeeCodeExit_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q48="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q48:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllEmployeeCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllEmployeeCourse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllEmployeeCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllEmployeeCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllEmployeeCourse_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q49="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q49:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetEmployeeCourseByEmployeeIDandCourseID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeCourseByEmployeeIDandCourseID" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetEmployeeCourseByEmployeeIDandCourseID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeCourseByEmployeeIDandCourseIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetEmployeeCourseByEmployeeIDandCourseID_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q50="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q50:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetEmployeeCourseByEmployeeID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeCourseByEmployeeID" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetEmployeeCourseByEmployeeID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeCourseByEmployeeIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetEmployeeCourseByEmployeeID_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q51="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q51:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetEmployeeCourseByCourseID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeCourseByCourseID" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetEmployeeCourseByCourseID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeCourseByCourseIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetEmployeeCourseByCourseID_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q52="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q52:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddEmployeeCourseList_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddEmployeeCourseList" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddEmployeeCourseList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddEmployeeCourseListResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddEmployeeCourseList_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q53="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q53:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditEmployeeCourseList_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditEmployeeCourseList" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditEmployeeCourseList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditEmployeeCourseListResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditEmployeeCourseList_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q54="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q54:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddEmployeeCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddEmployeeCourse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddEmployeeCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddEmployeeCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddEmployeeCourse_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q55="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q55:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditEmployeeCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditEmployeeCourse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditEmployeeCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditEmployeeCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditEmployeeCourse_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q56="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q56:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllProgressTransaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProgressTransaction" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllProgressTransaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProgressTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllProgressTransaction_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q57="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q57:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddProgressTransactionList_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProgressTransactionList" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddProgressTransactionList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProgressTransactionListResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddProgressTransactionList_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q58="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q58:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddProgressTransaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProgressTransaction" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddProgressTransaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProgressTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddProgressTransaction_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q59="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q59:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditProgressTransaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditProgressTransaction" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditProgressTransaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditProgressTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditProgressTransaction_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q60="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q60:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllQuestion" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllQuestion_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q61="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q61:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllQuestionByStoryID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllQuestionByStoryID" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllQuestionByStoryID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllQuestionByStoryIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllQuestionByStoryID_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q62="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q62:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddQuestion" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddQuestion_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q63="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q63:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditQuestion" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditQuestion_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q64="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q64:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllStory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllStory" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllStory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllStoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllStory_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q65="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q65:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllStoriesByTopicID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllStoriesByTopicID" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllStoriesByTopicID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllStoriesByTopicIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllStoriesByTopicID_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q66="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q66:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddStory_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddStory" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddStory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddStoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddStory_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q67="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q67:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditStory_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditStory" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditStory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditStoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditStory_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q68="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q68:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllTitle_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTitle" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllTitle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllTitle_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q69="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q69:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveTitle_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveTitle" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveTitle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetActiveTitle_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q70="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q70:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddTitle_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTitle" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddTitle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddTitle_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q71="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q71:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditTitle_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditTitle" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditTitle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditTitle_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q72="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q72:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_IsTitleCodeExit_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsTitleCodeExit" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_IsTitleCodeExit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsTitleCodeExitResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_IsTitleCodeExit_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q73="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q73:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_IsTitleNameExit_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsTitleNameExit" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_IsTitleNameExit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsTitleNameExitResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_IsTitleNameExit_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q74="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q74:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllTopic_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTopic" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllTopic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTopicResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_GetAllTopic_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q75="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q75:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddTopic_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTopic" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddTopic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTopicResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_AddTopic_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q76="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q76:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditTopic_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditTopic" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditTopic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditTopicResponse" />
+  </wsdl:message>
+  <wsdl:message name="HR_TrainingIService_EditTopic_ServerSvcFaultFault_FaultMessage">
+    <wsdl:part xmlns:q77="http://schemas.datacontract.org/2004/07/HR_TrainingServiceContract" name="detail" element="q77:ServerSvcFault" />
+  </wsdl:message>
+  <wsdl:portType name="HR_TrainingIService">
+    <wsdl:operation name="GetAllTrainingProgress">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllTrainingProgress" message="tns:HR_TrainingIService_GetAllTrainingProgress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllTrainingProgressResponse" message="tns:HR_TrainingIService_GetAllTrainingProgress_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllTrainingProgressServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllTrainingProgress_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTrainingProgress">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddTrainingProgress" message="tns:HR_TrainingIService_AddTrainingProgress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddTrainingProgressResponse" message="tns:HR_TrainingIService_AddTrainingProgress_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddTrainingProgressServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddTrainingProgress_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditTrainingProgress">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditTrainingProgress" message="tns:HR_TrainingIService_EditTrainingProgress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditTrainingProgressResponse" message="tns:HR_TrainingIService_EditTrainingProgress_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditTrainingProgressServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditTrainingProgress_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLogIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetUserLogIn" message="tns:HR_TrainingIService_GetUserLogIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetUserLogInResponse" message="tns:HR_TrainingIService_GetUserLogIn_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetUserLogInServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetUserLogIn_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllUser" message="tns:HR_TrainingIService_GetAllUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllUserResponse" message="tns:HR_TrainingIService_GetAllUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllUserServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllUser_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveUser" message="tns:HR_TrainingIService_GetActiveUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveUserResponse" message="tns:HR_TrainingIService_GetActiveUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveUserServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetActiveUser_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddUser" message="tns:HR_TrainingIService_AddUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddUserResponse" message="tns:HR_TrainingIService_AddUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddUserServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddUser_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditUser" message="tns:HR_TrainingIService_EditUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditUserResponse" message="tns:HR_TrainingIService_EditUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditUserServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditUser_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserEmployeeLogIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetUserEmployeeLogIn" message="tns:HR_TrainingIService_GetUserEmployeeLogIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetUserEmployeeLogInResponse" message="tns:HR_TrainingIService_GetUserEmployeeLogIn_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetUserEmployeeLogInServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetUserEmployeeLogIn_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUserEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllUserEmployee" message="tns:HR_TrainingIService_GetAllUserEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllUserEmployeeResponse" message="tns:HR_TrainingIService_GetAllUserEmployee_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllUserEmployeeServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllUserEmployee_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveUserEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveUserEmployee" message="tns:HR_TrainingIService_GetActiveUserEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveUserEmployeeResponse" message="tns:HR_TrainingIService_GetActiveUserEmployee_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveUserEmployeeServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetActiveUserEmployee_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddUserEmployee" message="tns:HR_TrainingIService_AddUserEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddUserEmployeeResponse" message="tns:HR_TrainingIService_AddUserEmployee_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddUserEmployeeServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddUserEmployee_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditUserEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditUserEmployee" message="tns:HR_TrainingIService_EditUserEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditUserEmployeeResponse" message="tns:HR_TrainingIService_EditUserEmployee_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditUserEmployeeServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditUserEmployee_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewBillNo">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetNewBillNo" message="tns:HR_TrainingIService_GetNewBillNo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetNewBillNoResponse" message="tns:HR_TrainingIService_GetNewBillNo_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetNewBillNoServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetNewBillNo_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBill">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllBill" message="tns:HR_TrainingIService_GetAllBill_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllBillResponse" message="tns:HR_TrainingIService_GetAllBill_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllBillServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllBill_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBillByCompanyID">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetBillByCompanyID" message="tns:HR_TrainingIService_GetBillByCompanyID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetBillByCompanyIDResponse" message="tns:HR_TrainingIService_GetBillByCompanyID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetBillByCompanyIDServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetBillByCompanyID_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBillAndCompanyCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddBillAndCompanyCourse" message="tns:HR_TrainingIService_AddBillAndCompanyCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddBillAndCompanyCourseResponse" message="tns:HR_TrainingIService_AddBillAndCompanyCourse_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddBillAndCompanyCourseServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddBillAndCompanyCourse_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBillList">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddBillList" message="tns:HR_TrainingIService_AddBillList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddBillListResponse" message="tns:HR_TrainingIService_AddBillList_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddBillListServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddBillList_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditBillList">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditBillList" message="tns:HR_TrainingIService_EditBillList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditBillListResponse" message="tns:HR_TrainingIService_EditBillList_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditBillListServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditBillList_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBill">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddBill" message="tns:HR_TrainingIService_AddBill_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddBillResponse" message="tns:HR_TrainingIService_AddBill_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddBillServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddBill_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditBill">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditBill" message="tns:HR_TrainingIService_EditBill_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditBillResponse" message="tns:HR_TrainingIService_EditBill_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditBillServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditBill_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllCompany" message="tns:HR_TrainingIService_GetAllCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllCompanyResponse" message="tns:HR_TrainingIService_GetAllCompany_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllCompanyServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllCompany_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddCompany" message="tns:HR_TrainingIService_AddCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddCompanyResponse" message="tns:HR_TrainingIService_AddCompany_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddCompanyServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddCompany_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditCompany" message="tns:HR_TrainingIService_EditCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditCompanyResponse" message="tns:HR_TrainingIService_EditCompany_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditCompanyServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditCompany_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllCourse" message="tns:HR_TrainingIService_GetAllCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllCourseResponse" message="tns:HR_TrainingIService_GetAllCourse_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllCourseServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllCourse_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCourseByCompanyID">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllCourseByCompanyID" message="tns:HR_TrainingIService_GetAllCourseByCompanyID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllCourseByCompanyIDResponse" message="tns:HR_TrainingIService_GetAllCourseByCompanyID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllCourseByCompanyIDServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllCourseByCompanyID_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddCourse" message="tns:HR_TrainingIService_AddCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddCourseResponse" message="tns:HR_TrainingIService_AddCourse_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddCourseServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddCourse_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditCourse" message="tns:HR_TrainingIService_EditCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditCourseResponse" message="tns:HR_TrainingIService_EditCourse_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditCourseServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditCourse_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCourseByEmployeeID">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllCourseByEmployeeID" message="tns:HR_TrainingIService_GetAllCourseByEmployeeID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllCourseByEmployeeIDResponse" message="tns:HR_TrainingIService_GetAllCourseByEmployeeID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllCourseByEmployeeIDServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllCourseByEmployeeID_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCourseTopicStory">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllCourseTopicStory" message="tns:HR_TrainingIService_GetAllCourseTopicStory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllCourseTopicStoryResponse" message="tns:HR_TrainingIService_GetAllCourseTopicStory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllCourseTopicStoryServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllCourseTopicStory_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseTopicStoryByCourseID">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetCourseTopicStoryByCourseID" message="tns:HR_TrainingIService_GetCourseTopicStoryByCourseID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetCourseTopicStoryByCourseIDResponse" message="tns:HR_TrainingIService_GetCourseTopicStoryByCourseID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetCourseTopicStoryByCourseIDServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetCourseTopicStoryByCourseID_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCourseTopicStory">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddCourseTopicStory" message="tns:HR_TrainingIService_AddCourseTopicStory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddCourseTopicStoryResponse" message="tns:HR_TrainingIService_AddCourseTopicStory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddCourseTopicStoryServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddCourseTopicStory_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditCourseTopicStory">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditCourseTopicStory" message="tns:HR_TrainingIService_EditCourseTopicStory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditCourseTopicStoryResponse" message="tns:HR_TrainingIService_EditCourseTopicStory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditCourseTopicStoryServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditCourseTopicStory_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDepartment">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllDepartment" message="tns:HR_TrainingIService_GetAllDepartment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllDepartmentResponse" message="tns:HR_TrainingIService_GetAllDepartment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllDepartmentServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllDepartment_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveDepartment">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveDepartment" message="tns:HR_TrainingIService_GetActiveDepartment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveDepartmentResponse" message="tns:HR_TrainingIService_GetActiveDepartment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveDepartmentServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetActiveDepartment_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDepartment">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddDepartment" message="tns:HR_TrainingIService_AddDepartment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddDepartmentResponse" message="tns:HR_TrainingIService_AddDepartment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddDepartmentServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddDepartment_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditDepartment">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditDepartment" message="tns:HR_TrainingIService_EditDepartment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditDepartmentResponse" message="tns:HR_TrainingIService_EditDepartment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditDepartmentServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditDepartment_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsDepartmentCodeExit">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/IsDepartmentCodeExit" message="tns:HR_TrainingIService_IsDepartmentCodeExit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/IsDepartmentCodeExitResponse" message="tns:HR_TrainingIService_IsDepartmentCodeExit_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/IsDepartmentCodeExitServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_IsDepartmentCodeExit_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsDepartmentNameExit">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/IsDepartmentNameExit" message="tns:HR_TrainingIService_IsDepartmentNameExit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/IsDepartmentNameExitResponse" message="tns:HR_TrainingIService_IsDepartmentNameExit_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/IsDepartmentNameExitServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_IsDepartmentNameExit_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EmployeeLogIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EmployeeLogIn" message="tns:HR_TrainingIService_EmployeeLogIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EmployeeLogInResponse" message="tns:HR_TrainingIService_EmployeeLogIn_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EmployeeLogInServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EmployeeLogIn_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllEmployee" message="tns:HR_TrainingIService_GetAllEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllEmployeeResponse" message="tns:HR_TrainingIService_GetAllEmployee_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllEmployeeServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllEmployee_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveEmployee" message="tns:HR_TrainingIService_GetActiveEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveEmployeeResponse" message="tns:HR_TrainingIService_GetActiveEmployee_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveEmployeeServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetActiveEmployee_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveEmployeeByDepartmentID">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveEmployeeByDepartmentID" message="tns:HR_TrainingIService_GetActiveEmployeeByDepartmentID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveEmployeeByDepartmentIDResponse" message="tns:HR_TrainingIService_GetActiveEmployeeByDepartmentID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveEmployeeByDepartmentIDServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetActiveEmployeeByDepartmentID_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveEmployeeByCompanyID">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveEmployeeByCompanyID" message="tns:HR_TrainingIService_GetActiveEmployeeByCompanyID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveEmployeeByCompanyIDResponse" message="tns:HR_TrainingIService_GetActiveEmployeeByCompanyID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveEmployeeByCompanyIDServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetActiveEmployeeByCompanyID_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeByEmployeeID">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetEmployeeByEmployeeID" message="tns:HR_TrainingIService_GetEmployeeByEmployeeID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetEmployeeByEmployeeIDResponse" message="tns:HR_TrainingIService_GetEmployeeByEmployeeID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetEmployeeByEmployeeIDServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetEmployeeByEmployeeID_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddEmployee" message="tns:HR_TrainingIService_AddEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddEmployeeResponse" message="tns:HR_TrainingIService_AddEmployee_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddEmployeeServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddEmployee_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditEmployee" message="tns:HR_TrainingIService_EditEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditEmployeeResponse" message="tns:HR_TrainingIService_EditEmployee_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditEmployeeServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditEmployee_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsEmployeeCodeExit">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/IsEmployeeCodeExit" message="tns:HR_TrainingIService_IsEmployeeCodeExit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/IsEmployeeCodeExitResponse" message="tns:HR_TrainingIService_IsEmployeeCodeExit_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/IsEmployeeCodeExitServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_IsEmployeeCodeExit_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEmployeeCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllEmployeeCourse" message="tns:HR_TrainingIService_GetAllEmployeeCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllEmployeeCourseResponse" message="tns:HR_TrainingIService_GetAllEmployeeCourse_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllEmployeeCourseServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllEmployeeCourse_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeCourseByEmployeeIDandCourseID">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetEmployeeCourseByEmployeeIDandCourseID" message="tns:HR_TrainingIService_GetEmployeeCourseByEmployeeIDandCourseID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetEmployeeCourseByEmployeeIDandCourseIDResponse" message="tns:HR_TrainingIService_GetEmployeeCourseByEmployeeIDandCourseID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetEmployeeCourseByEmployeeIDandCourseIDServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetEmployeeCourseByEmployeeIDandCourseID_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeCourseByEmployeeID">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetEmployeeCourseByEmployeeID" message="tns:HR_TrainingIService_GetEmployeeCourseByEmployeeID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetEmployeeCourseByEmployeeIDResponse" message="tns:HR_TrainingIService_GetEmployeeCourseByEmployeeID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetEmployeeCourseByEmployeeIDServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetEmployeeCourseByEmployeeID_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeCourseByCourseID">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetEmployeeCourseByCourseID" message="tns:HR_TrainingIService_GetEmployeeCourseByCourseID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetEmployeeCourseByCourseIDResponse" message="tns:HR_TrainingIService_GetEmployeeCourseByCourseID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetEmployeeCourseByCourseIDServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetEmployeeCourseByCourseID_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddEmployeeCourseList">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddEmployeeCourseList" message="tns:HR_TrainingIService_AddEmployeeCourseList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddEmployeeCourseListResponse" message="tns:HR_TrainingIService_AddEmployeeCourseList_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddEmployeeCourseListServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddEmployeeCourseList_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditEmployeeCourseList">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditEmployeeCourseList" message="tns:HR_TrainingIService_EditEmployeeCourseList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditEmployeeCourseListResponse" message="tns:HR_TrainingIService_EditEmployeeCourseList_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditEmployeeCourseListServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditEmployeeCourseList_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddEmployeeCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddEmployeeCourse" message="tns:HR_TrainingIService_AddEmployeeCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddEmployeeCourseResponse" message="tns:HR_TrainingIService_AddEmployeeCourse_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddEmployeeCourseServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddEmployeeCourse_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditEmployeeCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditEmployeeCourse" message="tns:HR_TrainingIService_EditEmployeeCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditEmployeeCourseResponse" message="tns:HR_TrainingIService_EditEmployeeCourse_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditEmployeeCourseServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditEmployeeCourse_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProgressTransaction">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllProgressTransaction" message="tns:HR_TrainingIService_GetAllProgressTransaction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllProgressTransactionResponse" message="tns:HR_TrainingIService_GetAllProgressTransaction_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllProgressTransactionServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllProgressTransaction_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProgressTransactionList">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddProgressTransactionList" message="tns:HR_TrainingIService_AddProgressTransactionList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddProgressTransactionListResponse" message="tns:HR_TrainingIService_AddProgressTransactionList_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddProgressTransactionListServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddProgressTransactionList_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProgressTransaction">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddProgressTransaction" message="tns:HR_TrainingIService_AddProgressTransaction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddProgressTransactionResponse" message="tns:HR_TrainingIService_AddProgressTransaction_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddProgressTransactionServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddProgressTransaction_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditProgressTransaction">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditProgressTransaction" message="tns:HR_TrainingIService_EditProgressTransaction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditProgressTransactionResponse" message="tns:HR_TrainingIService_EditProgressTransaction_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditProgressTransactionServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditProgressTransaction_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllQuestion" message="tns:HR_TrainingIService_GetAllQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllQuestionResponse" message="tns:HR_TrainingIService_GetAllQuestion_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllQuestionServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllQuestion_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllQuestionByStoryID">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllQuestionByStoryID" message="tns:HR_TrainingIService_GetAllQuestionByStoryID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllQuestionByStoryIDResponse" message="tns:HR_TrainingIService_GetAllQuestionByStoryID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllQuestionByStoryIDServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllQuestionByStoryID_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddQuestion" message="tns:HR_TrainingIService_AddQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddQuestionResponse" message="tns:HR_TrainingIService_AddQuestion_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddQuestionServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddQuestion_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditQuestion" message="tns:HR_TrainingIService_EditQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditQuestionResponse" message="tns:HR_TrainingIService_EditQuestion_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditQuestionServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditQuestion_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStory">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllStory" message="tns:HR_TrainingIService_GetAllStory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllStoryResponse" message="tns:HR_TrainingIService_GetAllStory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllStoryServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllStory_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStoriesByTopicID">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllStoriesByTopicID" message="tns:HR_TrainingIService_GetAllStoriesByTopicID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllStoriesByTopicIDResponse" message="tns:HR_TrainingIService_GetAllStoriesByTopicID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllStoriesByTopicIDServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllStoriesByTopicID_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddStory">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddStory" message="tns:HR_TrainingIService_AddStory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddStoryResponse" message="tns:HR_TrainingIService_AddStory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddStoryServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddStory_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditStory">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditStory" message="tns:HR_TrainingIService_EditStory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditStoryResponse" message="tns:HR_TrainingIService_EditStory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditStoryServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditStory_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTitle">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllTitle" message="tns:HR_TrainingIService_GetAllTitle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllTitleResponse" message="tns:HR_TrainingIService_GetAllTitle_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllTitleServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllTitle_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveTitle">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveTitle" message="tns:HR_TrainingIService_GetActiveTitle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveTitleResponse" message="tns:HR_TrainingIService_GetActiveTitle_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetActiveTitleServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetActiveTitle_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTitle">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddTitle" message="tns:HR_TrainingIService_AddTitle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddTitleResponse" message="tns:HR_TrainingIService_AddTitle_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddTitleServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddTitle_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditTitle">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditTitle" message="tns:HR_TrainingIService_EditTitle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditTitleResponse" message="tns:HR_TrainingIService_EditTitle_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditTitleServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditTitle_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsTitleCodeExit">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/IsTitleCodeExit" message="tns:HR_TrainingIService_IsTitleCodeExit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/IsTitleCodeExitResponse" message="tns:HR_TrainingIService_IsTitleCodeExit_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/IsTitleCodeExitServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_IsTitleCodeExit_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsTitleNameExit">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/IsTitleNameExit" message="tns:HR_TrainingIService_IsTitleNameExit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/IsTitleNameExitResponse" message="tns:HR_TrainingIService_IsTitleNameExit_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/IsTitleNameExitServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_IsTitleNameExit_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTopic">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllTopic" message="tns:HR_TrainingIService_GetAllTopic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllTopicResponse" message="tns:HR_TrainingIService_GetAllTopic_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/GetAllTopicServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_GetAllTopic_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTopic">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/AddTopic" message="tns:HR_TrainingIService_AddTopic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/AddTopicResponse" message="tns:HR_TrainingIService_AddTopic_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/AddTopicServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_AddTopic_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditTopic">
+      <wsdl:input wsaw:Action="http://tempuri.org/HR_TrainingIService/EditTopic" message="tns:HR_TrainingIService_EditTopic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/HR_TrainingIService/EditTopicResponse" message="tns:HR_TrainingIService_EditTopic_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/HR_TrainingIService/EditTopicServerSvcFaultFault" name="ServerSvcFaultFault" message="tns:HR_TrainingIService_EditTopic_ServerSvcFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HRRTcpEndpoint" type="tns:HR_TrainingIService">
+    <wsp:PolicyReference URI="#HRRTcpEndpoint_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetAllTrainingProgress">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllTrainingProgress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddTrainingProgress">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddTrainingProgress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditTrainingProgress">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditTrainingProgress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLogIn">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetUserLogIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUser">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveUser">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetActiveUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditUser">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserEmployeeLogIn">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetUserEmployeeLogIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUserEmployee">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllUserEmployee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveUserEmployee">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetActiveUserEmployee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserEmployee">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddUserEmployee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditUserEmployee">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditUserEmployee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewBillNo">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetNewBillNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBill">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetBillByCompanyID">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetBillByCompanyID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddBillAndCompanyCourse">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddBillAndCompanyCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddBillList">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddBillList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditBillList">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditBillList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddBill">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditBill">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompany">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddCompany">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditCompany">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCourse">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCourseByCompanyID">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllCourseByCompanyID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddCourse">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditCourse">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCourseByEmployeeID">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllCourseByEmployeeID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCourseTopicStory">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllCourseTopicStory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseTopicStoryByCourseID">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetCourseTopicStoryByCourseID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddCourseTopicStory">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddCourseTopicStory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditCourseTopicStory">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditCourseTopicStory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDepartment">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllDepartment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveDepartment">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetActiveDepartment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddDepartment">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddDepartment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditDepartment">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditDepartment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsDepartmentCodeExit">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/IsDepartmentCodeExit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsDepartmentNameExit">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/IsDepartmentNameExit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EmployeeLogIn">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EmployeeLogIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEmployee">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllEmployee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveEmployee">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetActiveEmployee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveEmployeeByDepartmentID">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetActiveEmployeeByDepartmentID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveEmployeeByCompanyID">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetActiveEmployeeByCompanyID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeByEmployeeID">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetEmployeeByEmployeeID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddEmployee">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddEmployee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditEmployee">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditEmployee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsEmployeeCodeExit">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/IsEmployeeCodeExit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEmployeeCourse">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllEmployeeCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeCourseByEmployeeIDandCourseID">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetEmployeeCourseByEmployeeIDandCourseID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeCourseByEmployeeID">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetEmployeeCourseByEmployeeID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeCourseByCourseID">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetEmployeeCourseByCourseID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddEmployeeCourseList">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddEmployeeCourseList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditEmployeeCourseList">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditEmployeeCourseList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddEmployeeCourse">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddEmployeeCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditEmployeeCourse">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditEmployeeCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProgressTransaction">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllProgressTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddProgressTransactionList">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddProgressTransactionList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddProgressTransaction">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddProgressTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditProgressTransaction">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditProgressTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllQuestion">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllQuestion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllQuestionByStoryID">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllQuestionByStoryID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddQuestion">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddQuestion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditQuestion">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditQuestion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStory">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllStory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStoriesByTopicID">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllStoriesByTopicID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddStory">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddStory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditStory">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditStory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTitle">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllTitle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveTitle">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetActiveTitle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddTitle">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddTitle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditTitle">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditTitle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsTitleCodeExit">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/IsTitleCodeExit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsTitleNameExit">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/IsTitleNameExit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTopic">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/GetAllTopic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddTopic">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/AddTopic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditTopic">
+      <soap12:operation soapAction="http://tempuri.org/HR_TrainingIService/EditTopic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerSvcFaultFault">
+        <soap12:fault use="literal" name="ServerSvcFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HR_TrainingService">
+    <wsdl:port name="HRRTcpEndpoint" binding="tns:HRRTcpEndpoint">
+      <soap12:address location="net.tcp://localhost:9012/" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:9012/</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Dns>localhost</Dns>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

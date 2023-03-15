@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+}
+
+<style>
+    body {
+        background-image: url('../../Content/Img/QuestionBG.jpg');
+        background-size: 110%;
+        background-repeat: no-repeat;
+    }
+</style>
+@if (ViewData["ExpiredMsg"] != null)
+    {
+        <div class="alert alert-danger" style="margin-top:20%; text-align:center">
+            <h1 class="customGlow" style="font:bold">@ViewData["ExpiredMsg"]</h1>
+            <h3>@ViewData["ContactUsMsg"]</h3>
+
+        </div>
+    }
+@*@if (Session["ExpireSesseion"] != null)
+{
+    <div class="alert alert-danger" style="margin-top:20%; text-align:center">
+        <h1 class="customGlow" style="font:bold">@Session["ExpireSesseion"]</h1>
+        <h3>@Session["ContactUsSession"]</h3>
+
+    </div>
+}*@
+
+

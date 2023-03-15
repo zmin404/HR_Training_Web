@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HR_TrainingVO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HR_TrainingVO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfTrainingProgressVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TrainingProgressVO" nillable="true" type="tns:TrainingProgressVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTrainingProgressVO" nillable="true" type="tns:ArrayOfTrainingProgressVO" />
+  <xs:complexType name="TrainingProgressVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Answer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CourseID" type="xs:int" />
+      <xs:element minOccurs="0" name="EmployeeID" type="xs:int" />
+      <xs:element minOccurs="0" name="EndDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Score" type="xs:int" />
+      <xs:element minOccurs="0" name="StartDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrainingProgressVO" nillable="true" type="tns:TrainingProgressVO" />
+  <xs:complexType name="UserVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastModifiedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LogInStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserVO" nillable="true" type="tns:UserVO" />
+  <xs:complexType name="ArrayOfUserVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserVO" nillable="true" type="tns:UserVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserVO" nillable="true" type="tns:ArrayOfUserVO" />
+  <xs:complexType name="UserEmployeeVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmployeeID" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastModifiedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserEmployeeVO" nillable="true" type="tns:UserEmployeeVO" />
+  <xs:complexType name="ArrayOfUserEmployeeVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserEmployeeVO" nillable="true" type="tns:UserEmployeeVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserEmployeeVO" nillable="true" type="tns:ArrayOfUserEmployeeVO" />
+  <xs:complexType name="ArrayOfBillVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BillVO" nillable="true" type="tns:BillVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBillVO" nillable="true" type="tns:ArrayOfBillVO" />
+  <xs:complexType name="BillVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BillAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BillDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="BillID" type="xs:int" />
+      <xs:element minOccurs="0" name="BillNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CourseID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastModifiedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StartDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="companyCourseList" nillable="true" type="tns:ArrayOfCompanyAndCourseVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BillVO" nillable="true" type="tns:BillVO" />
+  <xs:complexType name="ArrayOfCompanyAndCourseVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CompanyAndCourseVO" nillable="true" type="tns:CompanyAndCourseVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCompanyAndCourseVO" nillable="true" type="tns:ArrayOfCompanyAndCourseVO" />
+  <xs:complexType name="CompanyAndCourseVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BillID" type="xs:int" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="CourseID" type="xs:int" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedOn" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompanyAndCourseVO" nillable="true" type="tns:CompanyAndCourseVO" />
+  <xs:complexType name="ArrayOfCompanyVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CompanyVO" nillable="true" type="tns:CompanyVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCompanyVO" nillable="true" type="tns:ArrayOfCompanyVO" />
+  <xs:complexType name="CompanyVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastModifiedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PhoneNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Website" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompanyVO" nillable="true" type="tns:CompanyVO" />
+  <xs:complexType name="ArrayOfCourseVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CourseVO" nillable="true" type="tns:CourseVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCourseVO" nillable="true" type="tns:ArrayOfCourseVO" />
+  <xs:complexType name="CourseVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CourseID" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastModifiedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CourseVO" nillable="true" type="tns:CourseVO" />
+  <xs:complexType name="ArrayOfCourseTopicStoryVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CourseTopicStoryVO" nillable="true" type="tns:CourseTopicStoryVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCourseTopicStoryVO" nillable="true" type="tns:ArrayOfCourseTopicStoryVO" />
+  <xs:complexType name="CourseTopicStoryVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CourseDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CourseID" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Story" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StoryID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TopicDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TopicID" type="xs:int" />
+      <xs:element minOccurs="0" name="TopicTitle" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CourseTopicStoryVO" nillable="true" type="tns:CourseTopicStoryVO" />
+  <xs:complexType name="ArrayOfDepartmentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DepartmentVO" nillable="true" type="tns:DepartmentVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDepartmentVO" nillable="true" type="tns:ArrayOfDepartmentVO" />
+  <xs:complexType name="DepartmentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DepartmentCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartmentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastModifiedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedOn" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DepartmentVO" nillable="true" type="tns:DepartmentVO" />
+  <xs:complexType name="EmployeeVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:int" />
+      <xs:element minOccurs="0" name="DepartmentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmployeeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmployeeNameEng" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmployeeNameMyan" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastModifiedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TitleID" type="xs:int" />
+      <xs:element minOccurs="0" name="TitleName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmployeeVO" nillable="true" type="tns:EmployeeVO" />
+  <xs:complexType name="ArrayOfEmployeeVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmployeeVO" nillable="true" type="tns:EmployeeVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmployeeVO" nillable="true" type="tns:ArrayOfEmployeeVO" />
+  <xs:complexType name="ArrayOfEmployeeCourseVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmployeeCourseVO" nillable="true" type="tns:EmployeeCourseVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmployeeCourseVO" nillable="true" type="tns:ArrayOfEmployeeCourseVO" />
+  <xs:complexType name="EmployeeCourseVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CourseDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CourseID" type="xs:int" />
+      <xs:element minOccurs="0" name="DueDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EmployeeCourseID" type="xs:int" />
+      <xs:element minOccurs="0" name="EmployeeID" type="xs:int" />
+      <xs:element minOccurs="0" name="EmployeeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Progress" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmployeeCourseVO" nillable="true" type="tns:EmployeeCourseVO" />
+  <xs:complexType name="ArrayOfProgressTransactionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProgressTransactionVO" nillable="true" type="tns:ProgressTransactionVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProgressTransactionVO" nillable="true" type="tns:ArrayOfProgressTransactionVO" />
+  <xs:complexType name="ProgressTransactionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CourseID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="EmployeeID" type="xs:int" />
+      <xs:element minOccurs="0" name="EndDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="QuestionID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Score" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="StartDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StoryID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TopicID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TransactionDateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProgressTransactionVO" nillable="true" type="tns:ProgressTransactionVO" />
+  <xs:complexType name="ArrayOfQuestionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="QuestionVO" nillable="true" type="tns:QuestionVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfQuestionVO" nillable="true" type="tns:ArrayOfQuestionVO" />
+  <xs:complexType name="QuestionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Answer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsCorrect" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastModifiedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Question" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Story" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StoryID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QuestionVO" nillable="true" type="tns:QuestionVO" />
+  <xs:complexType name="ArrayOfStoryVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StoryVO" nillable="true" type="tns:StoryVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStoryVO" nillable="true" type="tns:ArrayOfStoryVO" />
+  <xs:complexType name="StoryVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LastModifiedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Story" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="TopicID" type="xs:int" />
+      <xs:element minOccurs="0" name="TopicTitle" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StoryVO" nillable="true" type="tns:StoryVO" />
+  <xs:complexType name="ArrayOfTitleVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TitleVO" nillable="true" type="tns:TitleVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTitleVO" nillable="true" type="tns:ArrayOfTitleVO" />
+  <xs:complexType name="TitleVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastModifiedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TitleCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TitleVO" nillable="true" type="tns:TitleVO" />
+  <xs:complexType name="ArrayOfTopicVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TopicVO" nillable="true" type="tns:TopicVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTopicVO" nillable="true" type="tns:ArrayOfTopicVO" />
+  <xs:complexType name="TopicVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastModifiedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModifiedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TopicID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TopicVO" nillable="true" type="tns:TopicVO" />
+</xs:schema>

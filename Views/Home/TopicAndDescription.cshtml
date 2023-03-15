@@ -1,0 +1,71 @@
+﻿@model HR_Training.Models.tbl_Topic
+
+@{
+    ViewBag.Title = "TopicAndDescription";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+<script type="text/javascript">
+    
+    function DisableBackButton() {window.history.forward();}
+    setTimeout("DisableBackButton()", 0);
+    window.onunload = function () {null};
+</script>
+<div class="col-md-12 row">
+    <div class="col-lg-2 col-sm-2 col-md-2 col-xs-2 btn-success" style="height: 900px; border: 1px solid gray; background-color: #0B3E73; overflow: auto ">
+        <div style="width: 105%; margin-top: 10px" class="container list-group">
+
+            @foreach (var item in ViewData["CourseList"] as List<HR_Training.Models.tbl_Course>)
+            {
+
+                <div class="list-group-item">
+                    @Html.ActionLink(item.Title.ToString(), "TopicAndDescription", new { id = item.Id })
+
+                </div>
+            }
+            @foreach (var item in ViewData["finishedCourseList"] as List<HR_Training.Models.tbl_Course>)
+            {
+
+
+                <div class="list-group-item" style="background-color: #5080D2 ">
+                    @Html.ActionLink(item.Title.ToString(), "TopicAndDescription", new { id = item.Id }, new { @style = "color:white;" })
+
+                </div>
+
+            }
+        </div>
+
+    </div>
+    <div class="col-lg-10 col-sm-10 col-md-10 col-xs-10" style="height:900px; border:1px solid gray; overflow:auto">
+        @if (ViewData["CourseTitle"] != null)
+        {
+            <div class="alert alert-success">
+                <strong>
+                    Success!
+                </strong>
+                You have successfully completed the @ViewData["CourseTitle"] course. Please choose another course! 
+            </div>
+        }
+        @foreach (var topicListItem in ViewData["TopicList"] as List<HR_Training.Models.tbl_Topic>)
+        {
+            <h3> @Html.ActionLink(topicListItem.Title, "TopicAndDescription", new { topicID = topicListItem.Id, courseID = Convert.ToInt32(ViewData["CourseID"]) })</h3>
+            <h5 style="line-height:1.9">@topicListItem.Description</h5>
+            <br />
+            <br />
+        }
+        @foreach (var topicListItem in ViewData["finishedTopicList"] as List<HR_Training.Models.tbl_Topic>)
+        {
+            <h3 style="color:green"> @Html.ActionLink(topicListItem.Title, "TopicAndDescription", new { id = Convert.ToInt32(ViewData["CourseID"]) }, new { @style = "color:green;" })</h3>
+            <h5 style="line-height:1.9">@topicListItem.Description</h5>
+            <br />
+            <br />
+        }
+    </div>
+    @*<div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>*@
+</div>
+@*<script>
+    setTimeout(function () {
+        $('.loader-wrapper').fadeToggle();
+    }, 750);
+</script>*@
